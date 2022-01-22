@@ -1,0 +1,139 @@
+@import "~antd/dist/antd.css";
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  font-weight: 400;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #e5e5e5;
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+#moviesapp {
+  background-color: #ffffff;
+  margin: auto;
+  padding-top: 20px;
+  max-width: 1010px;
+  padding-bottom: 20px;
+}
+
+.menu {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.header {
+  max-width: 944px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
+
+.footer {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.film {
+  width: 454px;
+  height: 281px;
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+  margin-bottom: 36px;
+}
+
+.filmlist {
+  max-width: 944px;
+  margin: 0 auto;
+}
+
+.film:nth-child(odd) {
+  margin-right: 36px;
+}
+.film:hover {
+  cursor: pointer;
+}
+
+.ant-card-body {
+  padding: 0;
+}
+.film__card {
+  width: 454px;
+  height: 281px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.film__poster {
+  width: 183px;
+}
+
+.film__poster-img {
+  width: 183px;
+  height: 281px;
+}
+
+.film__info {
+  width: 268px;
+  height: 281px;
+  padding: 12px 20px;
+}
+
+.film__title {
+  color: #000000;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 7px;
+}
+
+.film__date {
+  color: #827e7e;
+  margin-bottom: 7px;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.film__tags {
+  margin-bottom: 7px;
+}
+
+.film__description {
+  font-size: 12px;
+  line-height: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
