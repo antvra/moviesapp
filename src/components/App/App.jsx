@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Loader from '../Loader';
-import MoviesService from '../../services/MoviesService';
 import Header from '../Header';
+import { MovieAPI } from '../../services/MoviesService';
 import FilmList from '../FilmList';
 import Footer from '../Footer';
 
 export default class App extends Component {
-  MoviesService = new MoviesService();
-
-  constructor() {
-    super();
-    this.getFilms();
-  }
-
   state = {
     isLoaded: false,
     items: null,
     error: false,
   };
+
+  componentDidMount() {
+    this.getFilms();
+  }
 
   onError = () => {
     this.setState({
@@ -28,11 +25,11 @@ export default class App extends Component {
   };
 
   getFilms() {
-    this.MoviesService.getFilms()
-      .then((films) => {
+    MovieAPI.searchMovie()
+      .then((response) => {
         this.setState({
           isLoaded: true,
-          items: films.results,
+          items: response.data.results,
           error: false,
         });
       })
