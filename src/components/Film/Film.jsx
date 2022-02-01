@@ -16,7 +16,7 @@ const Film = ({ title, poster, description, date }) => (
       </div>
       <div className="film__info">
         <h5 className="film__title">{title}</h5>
-        <h6 className="film__date">{format(parseISO(date), 'd LLLL, yyyy')}</h6>
+        <h6 className="film__date">{date ? format(parseISO(date), 'd LLLL, yyyy') : 'Unknown'}</h6>
         <div className="film__tags">
           <Tag>Action</Tag>
           <Tag>Drama</Tag>
@@ -29,13 +29,14 @@ const Film = ({ title, poster, description, date }) => (
 
 Film.defaultProps = {
   poster: null,
+  date: null,
 };
 
 Film.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string,
   description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
 };
 
 export default Film;

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
-import Loader from '../Loader';
 import Header from '../Header';
 import { MovieAPI } from '../../services/MoviesService';
 import FilmList from '../FilmList';
@@ -8,47 +6,47 @@ import Footer from '../Footer';
 
 export default class App extends Component {
   state = {
-    isLoaded: false,
+    isLoaded: true,
     items: null,
     error: false,
+    name: null,
+    page: null,
+    total: null,
   };
-
-  componentDidMount() {
-    this.getFilms();
-  }
 
   onError = () => {
     this.setState({
-      isLoaded: true,
       error: true,
     });
   };
 
-  getFilms() {
-    MovieAPI.searchMovie()
-      .then((response) => {
-        this.setState({
-          isLoaded: true,
-          items: response.data.results,
-          error: false,
-        });
-      })
-      .catch(this.onError);
-  }
+  getFilms = (value, page = 1) => {
+    if (value === '') {
+      this.setState({ isLoaded: true, items: null, error: false, name: null, page: null, total: null });
+    } else {
+      this.setState({ isLoaded: false });
+      MovieAPI.searchMovie(value, page)
+        .then((response) => {
+          this.setState({
+            isLoaded: true,
+            items: response.data.results,
+            error: false,
+            name: value,
+            page,
+            total: response.data.total_results,
+          });
+        })
+        .catch(this.onError);
+    }
+  };
 
   render() {
-    const { items, isLoaded, error } = this.state;
-    if (!isLoaded) {
-      return <Loader />;
-    }
-    if (error) {
-      return <ErrorIndicator />;
-    }
+    const { items, isLoaded, error, name, page, total } = this.state;
     return (
       <div className="moviesapp">
-        <Header />
-        <FilmList items={items} />
-        <Footer />
+        <Header getFilms={this.getFilms} />
+        <FilmList items={items} isLoaded={isLoaded} error={error} />
+        <Footer page={page} total={total} name={name} getFilms={this.getFilms} />
       </div>
     );
   }
