@@ -1,0 +1,61 @@
+@import '~antd/dist/antd.css';
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #e5e5e5;
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+.ant-card-body {
+  padding: 0;
+}
+
+.moviesapp {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 20px 36px;
+  max-width: 1010px;
+}
+
+.filmlist {
+  min-height: 80vh;
+}
+
+@import './loader.scss';
+@import './header.scss';
+@import './footer.scss';
+@import './film.scss';
+@import './tablet.scss';
+@import './mobile.scss';

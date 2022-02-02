@@ -1,0 +1,11 @@
+@media (max-width: 1010px) {
+  .filmlist {
+    flex-direction: column;
+  }
+  .film__info {
+    width: 100%;
+  }
+  .film__rate {
+    justify-content: flex-end;
+  }
+}

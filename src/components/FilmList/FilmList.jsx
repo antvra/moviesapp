@@ -45,7 +45,7 @@ const FilmList = ({ items, isLoaded, error }) => {
       </Row>
     );
   }
-  return <Row />;
+  return <Row className="filmlist" />;
 };
 
 FilmList.defaultProps = {

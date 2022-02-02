@@ -1,0 +1,16 @@
+@media (max-width: 580px) {
+  .film__title {
+    font-size: 1em;
+  }
+  .film__info {
+    height: 245px;
+  }
+  .film__poster {
+    width: 60px;
+    height: 91px;
+    margin: 10px;
+  }
+  .film__rate {
+    display: block;
+  }
+}
