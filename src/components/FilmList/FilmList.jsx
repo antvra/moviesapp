@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row } from 'antd';
 import Loader from '../Loader';
+import { MakeDescription } from '../../services/MakeDescription';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Film from '../Film';
 
 const FilmList = ({ items, isLoaded, error }) => {
+  useEffect(() => MakeDescription(), [items]);
   if (error) {
     return (
       <Row className="filmlist">
