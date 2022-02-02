@@ -3,6 +3,7 @@
         "antd",
         "filmlist",
         "imgnotavailable",
-        "moviesapp"
+        "moviesapp",
+        "predeploy"
     ]
 }

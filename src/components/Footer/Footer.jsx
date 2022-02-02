@@ -8,6 +8,9 @@ const Footer = ({ getFilms, name, total }) => {
     changeCurrentPage(newPage);
     getFilms(name, newPage);
   };
+  if (!total) {
+    return null;
+  }
   return (
     <Pagination
       current={currentPage}

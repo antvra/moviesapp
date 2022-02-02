@@ -6,17 +6,18 @@ import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Film from '../Film';
 
 const FilmList = ({ items, isLoaded, error }) => {
-  if (!isLoaded) {
-    return (
-      <Row className="filmlist">
-        <Loader />
-      </Row>
-    );
-  }
   if (error) {
     return (
       <Row className="filmlist">
         <ErrorIndicator type={1} />
+      </Row>
+    );
+  }
+
+  if (!isLoaded) {
+    return (
+      <Row className="filmlist">
+        <Loader />
       </Row>
     );
   }
@@ -30,7 +31,7 @@ const FilmList = ({ items, isLoaded, error }) => {
       );
     }
     return (
-      <Row className="filmlist">
+      <Row className="filmlist" gutter={[32, 32]}>
         {items.map((item) => (
           <Film
             key={item.id}
@@ -38,6 +39,7 @@ const FilmList = ({ items, isLoaded, error }) => {
             poster={item.poster_path}
             description={item.overview}
             date={item.release_date}
+            vote={item.vote_average}
           />
         ))}
       </Row>

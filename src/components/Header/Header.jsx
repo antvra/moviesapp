@@ -12,14 +12,14 @@ export default class Header extends Component {
     value: '',
   };
 
+  // eslint-disable-next-line react/destructuring-assignment
+  sendRequest = debounce((value) => this.props.getFilms(value), 1000);
+
   onChangeInput = (event) => {
-    const { getFilms } = this.props;
     this.setState({
       value: event.target.value,
     });
-    const debounced = debounce((value) => getFilms(value), 500);
-
-    debounced(event.target.value);
+    this.sendRequest(event.target.value);
   };
 
   render() {
