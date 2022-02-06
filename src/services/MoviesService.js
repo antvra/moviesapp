@@ -14,4 +14,12 @@ export const MovieAPI = {
       return error.response;
     }
   },
+  async getGenres() {
+    try {
+      const res = await instance.get(`/3/genre/movie/list?api_key=${apiKEY}`);
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };

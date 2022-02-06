@@ -15,7 +15,7 @@
   .film__card {
     display: flex;
     flex-direction: column;
-    height: 245px;
+    min-height: 245px;
   }
   .film__header {
     display: flex;
@@ -28,5 +28,6 @@
 
   .film__description {
     padding: 0px 10px;
+    -webkit-line-clamp: 5;
   }
 }

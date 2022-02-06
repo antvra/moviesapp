@@ -4,6 +4,7 @@
   &__card {
     display: flex;
     flex-direction: row;
+    height: 281px;
   }
   &__rate {
     font-size: 15px;
@@ -22,7 +23,6 @@
   }
   &__info {
     width: 268px;
-    height: 281px;
     padding: 12px 20px;
     display: flex;
     flex-direction: column;
@@ -64,5 +64,8 @@
     font-size: 12px;
     line-height: 22px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
   }
 }

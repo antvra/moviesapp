@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header';
+import { GenresProvider } from '../../context/GenresContext';
 import { MovieAPI } from '../../services/MoviesService';
 import FilmList from '../FilmList';
 import Footer from '../Footer';
@@ -13,6 +14,14 @@ export default class App extends Component {
     page: null,
     total: null,
   };
+
+  genresList = null;
+
+  componentDidMount() {
+    MovieAPI.getGenres().then((list) => {
+      this.genresList = list.data.genres;
+    });
+  }
 
   onError = () => {
     this.setState({
@@ -43,11 +52,13 @@ export default class App extends Component {
   render() {
     const { items, isLoaded, error, name, page, total } = this.state;
     return (
-      <div className="moviesapp">
-        <Header getFilms={this.getFilms} />
-        <FilmList items={items} isLoaded={isLoaded} error={error} />
-        <Footer page={page} total={total} name={name} getFilms={this.getFilms} />
-      </div>
+      <GenresProvider value={this.genresList}>
+        <div className="moviesapp">
+          <Header getFilms={this.getFilms} />
+          <FilmList items={items} isLoaded={isLoaded} error={error} />
+          <Footer page={page} total={total} name={name} getFilms={this.getFilms} />
+        </div>
+      </GenresProvider>
     );
   }
 }

@@ -1,13 +1,16 @@
 import React from 'react';
-import { Card, Tag, Col, Rate } from 'antd';
+import { Card, Col, Rate } from 'antd';
 import { format, parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
-import { CW } from '../../services/ClientWidth';
+import GenreTag from '../GenreTag';
+import { GenresConsumer } from '../../context/GenresContext';
+import { ClientWidth } from '../../services/ClientWidth';
 import Vote from '../Vote';
 import failureImg from '../../assets/img/imgnotavailable.png';
 
-const Film = ({ title, poster, description, date, vote }) => {
-  if (CW > 580) {
+const Film = ({ title, poster, description, date, vote, genre }) => {
+  const width = ClientWidth();
+  if (width > 580) {
     return (
       <Col>
         <Card className="film">
@@ -26,10 +29,7 @@ const Film = ({ title, poster, description, date, vote }) => {
                 <Vote vote={vote} />
               </div>
               <h6 className="film__date">{date ? format(parseISO(date), 'd LLLL, yyyy') : 'Unknown'}</h6>
-              <div className="film__tags">
-                <Tag>Action</Tag>
-                <Tag>Drama</Tag>
-              </div>
+              <GenresConsumer>{(genresList) => <GenreTag genre={genre} genresList={genresList} />}</GenresConsumer>
               <p className="film__description">{description}</p>
               <Rate count={10} className="film__rate" />
             </div>
@@ -57,13 +57,9 @@ const Film = ({ title, poster, description, date, vote }) => {
                 <Vote vote={vote} />
               </div>
               <h6 className="film__date">{date ? format(parseISO(date), 'd LLLL, yyyy') : 'Unknown'}</h6>
-              <div className="film__tags">
-                <Tag>Action</Tag>
-                <Tag>Drama</Tag>
-              </div>
+              <GenresConsumer>{(genresList) => <GenreTag genre={genre} genresList={genresList} />}</GenresConsumer>
             </div>
           </div>
-
           <p className="film__description">{description}</p>
           <Rate count={10} className="film__rate" />
         </div>
@@ -71,10 +67,12 @@ const Film = ({ title, poster, description, date, vote }) => {
     </Col>
   );
 };
+
 Film.defaultProps = {
   poster: null,
   date: null,
   vote: 0,
+  genre: [],
 };
 
 Film.propTypes = {
@@ -83,6 +81,7 @@ Film.propTypes = {
   poster: PropTypes.string,
   description: PropTypes.string.isRequired,
   date: PropTypes.string,
+  genre: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default Film;

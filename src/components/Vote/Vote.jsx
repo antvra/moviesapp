@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 
 const Vote = ({ vote }) => {
   const colorize = (vote) => {
-    if (vote >= 5 && vote < 8) {
-      return 'yellow';
+    if (vote < 3) {
+      return '#E90000';
     }
-    if (vote < 5) {
-      return 'red';
+    if (vote >= 3 && vote < 5) {
+      return '#E97E00';
     }
-    return 'green';
+    if (vote >= 5 && vote < 7) {
+      return '#E9D100';
+    }
+    return ' #66E900';
   };
   return (
     <div className="film__vote" style={{ border: `2px solid ${colorize(vote)}` }}>
