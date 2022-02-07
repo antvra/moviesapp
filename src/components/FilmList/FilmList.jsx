@@ -5,7 +5,7 @@ import Loader from '../Loader';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Film from '../Film';
 
-const FilmList = ({ items, isLoaded, error }) => {
+const FilmList = ({ items, isLoaded, error, sessionID, rated, tab, getRated }) => {
   if (error) {
     return (
       <Row className="filmlist">
@@ -22,7 +22,7 @@ const FilmList = ({ items, isLoaded, error }) => {
     );
   }
 
-  if (isLoaded && items) {
+  if (isLoaded && items && tab === 'Search') {
     if (!items.length) {
       return (
         <Row className="filmlist">
@@ -41,6 +41,15 @@ const FilmList = ({ items, isLoaded, error }) => {
             date={item.release_date}
             vote={item.vote_average}
             genre={item.genre_ids}
+            id={item.id}
+            sessionID={sessionID}
+            rating={rated.reduce((acc, el) => {
+              if (el.id === item.id) {
+                acc = el.rating;
+              }
+              return acc;
+            }, 0)}
+            getRated={getRated}
           />
         ))}
       </Row>
@@ -53,12 +62,17 @@ FilmList.defaultProps = {
   items: [],
   isLoaded: false,
   error: false,
+  rated: [],
 };
 
 FilmList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
   isLoaded: PropTypes.bool,
   error: PropTypes.bool,
+  sessionID: PropTypes.string.isRequired,
+  rated: PropTypes.arrayOf(PropTypes.object),
+  tab: PropTypes.string.isRequired,
+  getRated: PropTypes.func.isRequired,
 };
 
 export default FilmList;

@@ -22,4 +22,30 @@ export const MovieAPI = {
       return error.response;
     }
   },
+  async createSession() {
+    try {
+      const res = await instance.get(`/3/authentication/guest_session/new?api_key=${apiKEY}`);
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
+  async rateMovie(id, value, sessionID) {
+    try {
+      const res = await instance.post(`/3/movie/${id}/rating?api_key=${apiKEY}&guest_session_id=${sessionID}`, {
+        value,
+      });
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
+  async getRated(sessionID) {
+    try {
+      const res = await instance.get(`/3/guest_session/${sessionID}/rated/movies?api_key=${apiKEY}`);
+      return res;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
