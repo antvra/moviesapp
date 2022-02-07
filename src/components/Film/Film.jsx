@@ -42,7 +42,6 @@ const Film = ({ title, poster, description, date, vote, genre, id, sessionID, ra
                   MovieAPI.rateMovie(id, value, sessionID).then(() => setTimeout(() => getRated(), 400));
                 }}
               />
-              <span>{rating}</span>
             </div>
           </div>
         </Card>
