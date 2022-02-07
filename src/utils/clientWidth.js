@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export function ClientWidth() {
-  const [Width, setWidth] = useState(null);
+export const ClientWidth = () => {
+  const [width, setWidth] = useState(null);
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
@@ -10,5 +10,5 @@ export function ClientWidth() {
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  return Width;
-}
+  return width;
+};

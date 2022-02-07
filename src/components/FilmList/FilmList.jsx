@@ -6,6 +6,14 @@ import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Film from '../Film';
 
 const FilmList = ({ items, isLoaded, error, sessionID, rated, tab, getRated }) => {
+  const getRateForFilm = (rated, item) =>
+    rated.reduce((acc, el) => {
+      if (el.id === item.id) {
+        acc = el.rating;
+      }
+      return acc;
+    }, 0);
+
   if (error) {
     return (
       <Row className="filmlist">
@@ -43,12 +51,7 @@ const FilmList = ({ items, isLoaded, error, sessionID, rated, tab, getRated }) =
             genre={item.genre_ids}
             id={item.id}
             sessionID={sessionID}
-            rating={rated.reduce((acc, el) => {
-              if (el.id === item.id) {
-                acc = el.rating;
-              }
-              return acc;
-            }, 0)}
+            rating={getRateForFilm(rated, item)}
             getRated={getRated}
           />
         ))}

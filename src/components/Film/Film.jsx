@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import GenreTag from '../GenreTag';
 import { MovieAPI } from '../../services/MoviesService';
 import { GenresConsumer } from '../../context/GenresContext';
-import { ClientWidth } from '../../services/ClientWidth';
+import { ClientWidth } from '../../utils/clientWidth';
 import Vote from '../Vote';
 import failureImg from '../../assets/img/imgnotavailable.png';
 
