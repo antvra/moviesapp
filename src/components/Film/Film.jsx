@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Col, Rate } from 'antd';
 import { format, parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
@@ -8,6 +7,7 @@ import { GenresConsumer } from '../../context/GenresContext';
 import { ClientWidth } from '../../utils/clientWidth';
 import Vote from '../Vote';
 import failureImg from '../../assets/img/imgnotavailable.png';
+import './film.scss';
 
 const Film = ({ title, poster, description, date, vote, genre, id, sessionID, rating, getRated }) => {
   const width = ClientWidth();

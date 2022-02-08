@@ -1,0 +1,44 @@
+.menu {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filmlist {
+  min-height: 80vh;
+  margin-bottom: 32px;
+  .ant-card-body {
+    padding: 0;
+  }
+}
+
+.moviesapp {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 20px 36px;
+  max-width: 1010px;
+}
+
+.moviesapp .ant-tabs .ant-tabs-nav {
+  .ant-tabs-nav-list {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  &:before {
+    border: none;
+  }
+}
+
+.search {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1010px) {
+  .ant-tabs-tabpane .filmlist {
+    flex-direction: column;
+  }
+  .film__info {
+    width: 100%;
+  }
+  .film__rate {
+    justify-content: flex-end;
+  }
+}

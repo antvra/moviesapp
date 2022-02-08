@@ -5,6 +5,7 @@ import { GenresProvider } from '../../context/GenresContext';
 import { MovieAPI } from '../../services/MoviesService';
 import FilmList from '../FilmList';
 import Footer from '../Footer';
+import './app.scss';
 
 const { TabPane } = Tabs;
 
@@ -84,7 +85,11 @@ export default class App extends Component {
         <div className="moviesapp">
           <Tabs defaultActiveKey="1" centered destroyInactiveTabPane>
             <TabPane tab="Search" key="1">
-              <Input placeholder="Type to search..." onChange={this.onChangeInput} value={name} className="header" />
+              <div className="search">
+                <label htmlFor="search">
+                  <Input placeholder="Type to search..." onChange={this.onChangeInput} value={name} name="search" />
+                </label>
+              </div>
               <FilmList
                 items={items}
                 isLoaded={isLoaded}
@@ -94,7 +99,7 @@ export default class App extends Component {
                 tab={tab}
                 getRated={this.getRated}
               />
-              <Footer page={page} total={total} name={name} getFilms={this.getFilms} />
+              {name && <Footer page={page} total={total} name={name} getFilms={this.getFilms} />}
             </TabPane>
             <TabPane tab="Rated" key="2">
               <FilmList

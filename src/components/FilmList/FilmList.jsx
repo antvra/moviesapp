@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Row } from 'antd';
 import Loader from '../Loader';
@@ -29,7 +28,6 @@ const FilmList = ({ items, isLoaded, error, sessionID, rated, tab, getRated }) =
       </Row>
     );
   }
-
   if (isLoaded && items && tab === 'Search') {
     if (!items.length) {
       return (

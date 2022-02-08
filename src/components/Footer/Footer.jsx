@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Pagination } from 'antd';
+import './footer.scss';
 
 const Footer = ({ getFilms, name, total }) => {
   const [currentPage, changeCurrentPage] = useState(1);
