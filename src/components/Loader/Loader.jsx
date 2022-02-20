@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import './loader.scss';
+import './Loader.scss';
 
 const Loader = () => (
   <div className="loader">

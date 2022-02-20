@@ -3,9 +3,9 @@ import { Tabs, Input } from 'antd';
 import debounce from 'lodash.debounce';
 import { GenresProvider } from '../../context/GenresContext';
 import { MovieAPI } from '../../services/MoviesService';
-import FilmList from '../FilmList';
-import Footer from '../Footer';
-import './app.scss';
+import { FilmList } from '../FilmList';
+import { Footer } from '../Footer';
+import './App.scss';
 
 const { TabPane } = Tabs;
 

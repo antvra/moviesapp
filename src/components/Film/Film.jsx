@@ -7,7 +7,7 @@ import { GenresConsumer } from '../../context/GenresContext';
 import { ClientWidth } from '../../utils/clientWidth';
 import Vote from '../Vote';
 import failureImg from '../../assets/img/imgnotavailable.png';
-import './film.scss';
+import './Film.scss';
 
 const Film = ({ title, poster, description, date, vote, genre, id, sessionID, rating, getRated }) => {
   const width = ClientWidth();
